@@ -3,13 +3,13 @@
 # default backend definition.  Set this to point to your content server.
 backend default {
   .host = "127.0.0.1";
-  .port = "8080";
+  .port = "8000";
 }
 
 # admin backend with longer timeout values. Set this to the same IP & port as your default server.
 backend admin {
   .host = "127.0.0.1";
-  .port = "8080";
+  .port = "8000";
   .first_byte_timeout = 18000s;
   .between_bytes_timeout = 18000s;
 }

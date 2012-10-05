@@ -3,13 +3,13 @@
 # default backend definition.  Set this to point to your content server.
 backend default {
   .host = "127.0.0.1";
-  .port = "8080";
+  .port = "8000";
 }
 
 # admin backend with longer timeout values. Set this to the same IP & port as your default server.
 backend admin {
   .host = "127.0.0.1";
-  .port = "8080";
+  .port = "8000";
   .first_byte_timeout = 18000s;
   .between_bytes_timeout = 18000s;
 }
@@ -112,20 +112,20 @@ sub vcl_recv {
     return (lookup);
 }
 
-# sub vcl_pipe {
-#     # Note that only the first request to the backend will have
-#     # X-Forwarded-For set.  If you use X-Forwarded-For and want to
-#     # have it set for all requests, make sure to have:
-#     # set bereq.http.connection = "close";
-#     # here.  It is not set by default as it might break some broken web
-#     # applications, like IIS with NTLM authentication.
-#     return (pipe);
-# }
-# 
-# sub vcl_pass {
-#     return (pass);
-# }
-# 
+ sub vcl_pipe {
+     # Note that only the first request to the backend will have
+     # X-Forwarded-For set.  If you use X-Forwarded-For and want to
+     # have it set for all requests, make sure to have:
+     # set bereq.http.connection = "close";
+     # here.  It is not set by default as it might break some broken web
+     # applications, like IIS with NTLM authentication.
+     return (pipe);
+ }
+ 
+ sub vcl_pass {
+     return (pass);
+ }
+ 
 sub vcl_hash {
     hash_data(req.url);
     if (req.http.host) {
@@ -137,15 +137,14 @@ sub vcl_hash {
         call design_exception;
     }
     return (hash);
-}
-# 
-# sub vcl_hit {
-#     return (deliver);
-# }
-# 
-# sub vcl_miss {
-#     return (fetch);
-# }
+} 
+  sub vcl_hit {
+     return (deliver);
+ }
+
+ sub vcl_miss {
+     return (fetch);
+ }
 
 sub vcl_fetch {
     if (beresp.status == 500) {
@@ -210,37 +209,38 @@ sub vcl_deliver {
     }
 }
 
-# sub vcl_error {
-#     set obj.http.Content-Type = "text/html; charset=utf-8";
-#     set obj.http.Retry-After = "5";
-#     synthetic {"
-# <?xml version="1.0" encoding="utf-8"?>
-# <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-#  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-# <html>
-#   <head>
-#     <title>"} + obj.status + " " + obj.response + {"</title>
-#   </head>
-#   <body>
-#     <h1>Error "} + obj.status + " " + obj.response + {"</h1>
-#     <p>"} + obj.response + {"</p>
-#     <h3>Guru Meditation:</h3>
-#     <p>XID: "} + req.xid + {"</p>
-#     <hr>
-#     <p>Varnish cache server</p>
-#   </body>
-# </html>
-# "};
-#     return (deliver);
-# }
-# 
-# sub vcl_init {
-#   return (ok);
-# }
-# 
-# sub vcl_fini {
-#   return (ok);
-# }
+ sub vcl_error {
+     set obj.http.Content-Type = "text/html; charset=utf-8";
+     set obj.http.Retry-After = "5";
+     synthetic {"
+ <?xml version="1.0" encoding="utf-8"?>
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+ <html>
+   <head>
+     <title>"} + obj.status + " " + obj.response + {"</title>
+   </head>
+   <body>
+     <h1>Error "} + obj.status + " " + obj.response + {"</h1>
+     <p>"} + obj.response + {"</p>
+     <h3>Guru Meditation:</h3>
+     <p>XID: "} + req.xid + {"</p>
+     <hr>
+     <p>Varnish cache server</p>
+   </body>
+ </html>
+ "};
+
+     return (deliver);
+ }
+ 
+ sub vcl_init {
+   return (ok);
+ }
+ 
+ sub vcl_fini {
+   return (ok);
+ }
 
 sub design_exception {
 }

@@ -113,6 +113,7 @@ class Phoenix_VarnishCache_Helper_Cache extends Mage_Core_Helper_Abstract
         $disableRoutes = explode("\n", trim(Mage::getStoreConfig(self::XML_PATH_VARNISH_CACHE_DISABLE_ROUTES)));
         foreach ($disableRoutes as $route) {
             $route = trim($route);
+           
             // if route is found at first position we have a hit
             if (!empty($route) && strpos($fullActionName, $route) === 0) {
                 return $this->setNoCacheHeader();
@@ -229,10 +230,10 @@ class Phoenix_VarnishCache_Helper_Cache extends Mage_Core_Helper_Abstract
         $response->setHeader('Cache-Control', $cacheControlValue, true);
 
         // set "Expires" header in the past to keep mod_expires from applying it's ruleset
-        $response->setHeader('Expires', 'Mon, 31 Mar 2008 10:00:00 GMT', true);
-
+      $response->setHeader('Expires', 'Mon, 31 Mar 2004 10:00:00 GMT', true);
+       
         // set "Pragma: no-cache" - just in case
-        $response->setHeader('Pragma', 'no-cache', true);
+      $response->setHeader('Pragma', 'no-cache', true);
     }
 
     /**

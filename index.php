@@ -32,7 +32,7 @@ if (version_compare(phpversion(), '5.2.0', '<')===true) {
 /**
  * Error reporting
  */
-error_reporting(E_ALL | E_STRICT);
+error_reporting(E_ALL | E_STRICT | E_NOTICE);
 
 /**
  * Compilation includes configuration file
@@ -61,13 +61,13 @@ if (file_exists($maintenanceFile)) {
 
 require_once $mageFilename;
 
-#Varien_Profiler::enable();
+Varien_Profiler::enable();
 
 if (isset($_SERVER['MAGE_IS_DEVELOPER_MODE'])) {
     Mage::setIsDeveloperMode(true);
 }
 
-#ini_set('display_errors', 1);
+ini_set('display_errors', 1);
 
 umask(0);
 
