@@ -1,0 +1,79 @@
+In IWD OnePageCheckout 2.0.0 removed license key
+
+added coupon code field
+
+fixed bugs with redirecting to success page in version magento 1.4.0.1
+
+Fixed proplems with HTTPS. On some hosts where https configured wrong, previous versions of module does not works.
+
+For Magento version 1.4.2.0 and later fixed bug with Google Analytics eCommerce Tracking
+in /app/code/local/IWD/OnepageCheckout/controllers/IndexController.php in function successAction() at the bottom of function changed:
+from
+Mage::dispatchEvent('checkout_onepage_controller_success_action');
+to
+Mage::dispatchEvent('checkout_onepage_controller_success_action', array('order_ids' => array($lastOrderId)));
+
+
+NOTE: To clean shopping cart after sucess payment for magento version 1.4.1.1 need to add code  
+$this->_inactivateQuote();  (or  $quote->setIsActive(false); if previous will not work)
+in submitOrder() function in file app/code/core/mage/sales/model/service/quote.php 
+before these lines:
+
+        $transaction->addObject($order);
+        $transaction->addCommitCallback(array($order, 'place'));
+        $transaction->addCommitCallback(array($order, 'save'));
+
+
+Fixed bugs for shipping methods, when user change country on checkout page. 
+If in the system uses different shipping for different locations depends on product weight, system has selected shipping as for weight = 0.
+Problem fixed by adding   $this->getQuote()->collectTotals()->save(); at the bottom of functions:
+saveBilling, saveShipping  in app/code/local/iwd/onepagecheckout/model/type/geo.php
+
+fixed bug with disappering of 'manage stores' block on system - config page by changing rewrite rule in
+/app/code/local/iwd/onepagecheckout/etc/config.xml
+    <global>
+        <rewrite>
+	        <iwd_onepagecheckout_system_config_save>
+                <from><![CDATA[#^/admin/system_config/save/section/onepagecheckout/#]]></from>
+                <to>/onepagecheckout/system_config/save/section/onepagecheckout/</to>
+	        </iwd_onepagecheckout_system_config_save>
+        </rewrite>
+    </global>
+
+
+
+Fixed bug with display of shipping amount. Make reload rotals information after page load
+
+
+***  06 July 2011  ***
+
+ADDED window popup for terms and conditions link
+
+***  10 July 2011  ***
+
+Fixed bug with updating shipping options/info when user changes saved or add new addresses.
+
+***  21 July 2011  ***
+
+Fixed bug with 'Create an account for later use' checkbox in IE8
+
+Fixed totals calculating if exists only one shipping method depending on zip
+
+***  29 July 2011  ***
+Design changed
+
+***  14 September 2011  ***
+
+Design changed to show Inc Tax Price on review order page
+
+***  31 October 2011  ***
+
+Fixed design of Place Order button to show correct in chrome browser
+
+***  16 July 2012  ***
+
+Removed license key, added custom empty cart page
+
+***  7 September 2012  ***
+
+Fixed bug for 1.4.x.x versions

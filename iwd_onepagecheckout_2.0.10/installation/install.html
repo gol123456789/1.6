@@ -1,0 +1,206 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title> Installation Manual :: IWD OnePageCheckout :: InteriorWebDesign.com</title>
+<style type="text/css">
+body {
+	-x-system-font:none;
+	background:#fff;
+	color:#2F2F2F;
+	font-family: helvetica, verdana, sans-serif;
+	font-size:11px;
+	line-height:1.55em;
+	padding-boblockquoteom: 50px;	
+}
+
+html {
+	min-height:100%;
+}
+
+form, input {
+	margin: 0px;
+	padding: 0px;
+	display: inline;
+}
+td , p,  a, span, div, li {
+	font: 11px Tahoma,  Helvetica, sans-serif;
+}
+a {
+	text-decoration: none;
+	color: #0B75A7;
+	outline: none;
+}
+a:hover {
+	text-decoration: none;
+}
+a img {
+	border: none;
+}
+
+blockquote{
+	background: #c5e0ec;
+	padding: 4px 10px;
+	border: 1px dotted #1d87b7;
+	display: block;
+}
+
+textarea{
+	background: none;
+	border: none;
+	width: 100%;
+	font: 11px Tahoma, Verdana, Helvetica, sans-serif;	
+}
+
+p {
+	font: 11px Tahoma, Verdana, Helvetica, sans-serif;
+	padding: 0px;
+	
+}
+h1, h2, h3, h4, h6 {
+	padding: 0px;	
+	font-family:  Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+h1 {font-size: 19px; color: #5184B6;}
+h2 {font-size: 17px; color: #5184B6;}
+h3 {font-size: 15px; color: #5184B6;}
+h4, h5, h6 {font-size: 12px;}
+
+ul, li {
+	margin: 5px 30px;;
+	padding: 0px;
+}
+
+.footerc, .footerl{
+	padding: 5px;
+	text-align: right;
+}
+
+.footerc, .footerl, .footerc *, .footerl *{
+	color: #fff;
+}
+
+.footerc{
+	width: 180px;
+	float: left;
+}
+
+.footerl{
+	width: 380px;
+	float: right;
+}
+.headerc{
+	color: #ffffff;
+	font-size:13px;
+	line-height: 24px;
+	padding: 5px;	
+}
+
+.fright{
+	float: right;
+	font-weight: bold;
+}
+
+
+</style>
+</head>
+<body>
+<table align="center" bgcolor="#0A467C" border="0" cellpadding="1" cellspacing="0" width="800"><tbody>
+	<tr>
+		<td>
+			<table align="center" bgcolor="#0A467C" border="0" cellpadding="0" cellspacing="0" width="800"><tbody>
+				<tr>
+					<td>
+						<a href="http://interiorwebdesign.com/"><img src="images/logo.png" border="0"></a>
+					</td>
+				</tr>
+				<tr>
+					<td  bgcolor="#0B75A7">
+						<div class="headerc">Magento Themes :: #1 Source for Magento Themes &amp; Magento Templates</div>
+					</td>
+				</tr>
+			</tbody></table><br>
+		</td>
+	</tr>
+</tbody></table>
+
+<table align="center" bgcolor="#ffffff" border="0" cellpadding="1" cellspacing="0" width="800"><tbody>
+	<tr>
+		<td>
+			<table align="center"><tbody>
+				<tr>
+					<td>
+
+<p>Thank you for downloading our extension. Please follow these instructions to proceed with the installation of your extension:</p>
+
+<h3>#1 Installation:</h3>
+
+<ol>
+	<li>Copy all files into your magento directory and turn Magento cache off.</li>
+	<li>In case you have different then "default" default folder - rename folders app/design/frontend/base/default and skin/frontend/base/default.</li>
+	<li>Navigate to System > Configuration > IWD > One Page Checkout and enable extension for any store you need.</li>
+	<li>Configure One Page Checkout module according to your needs.</li>
+
+	<li>If you are planning to use Geo-Ip detection:
+		<ul>
+			<li>Country: <a title="Download GeoIP database" href="http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz">Download</a> and unzip file under the 'MAGETO_ROOT/lib/MaxMind/GeoIP/data' folder if you don't have it</li>
+			<li>City: <a title="Download GeoCity database" href="http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz">Download</a> and unzip file under the 'MAGETO_ROOT/lib/MaxMind/GeoIP/data' folder if you don't have it</li>
+		</ul>
+	</li>
+
+	<li>That's all. Your clients can buy the products in the new convenient checkout module.</li>
+</ol>
+
+<h3>#2 Configuration</h3>
+						
+<h6>General:</h6>
+	<ul>
+		<li>Enabled - enable or disable extension for separate store;</li>
+		<li>Page Title - Checkout page title;</li>
+		<li>Default Shipping Method - Selected shipping method by default;</li>
+		<li>Default Payment Method - Selected payment method by default;</li>
+		<li>Default Country - Selected country by default;</li>
+		<li>Allow Guest Checkout - 'No' - to make people have to register during checkout;</li>
+		<li>Show Shipping Address Form - You can hide shipping address if you don't need to ask it;</li>
+		<li>Show Subscribe to Newsletter Checkbox - Customer can subscribe to your newsletter during checkout;</li>
+		<li>Default Country - Selected country by default;</li>
+		
+	</ul>		
+
+<h6>GeoIP:</h6>
+	<ul>
+		<li>Enable Country Detection - detect customer country</li>
+		<li>GeoIp filename - .dat file. <a title="Download GeoIP database" href="http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz">Download</a> and unzip file under the 'MAGETO_ROOT/lib/MaxMind/GeoIP/data' folder if you don't have it</li>
+		<li>Enable City Detection - detect customer city, postcode</li>
+		<li>GeoCity filename - .dat file. <a title="Download GeoCity database" href="http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz">Download</a> and unzip file under the 'MAGETO_ROOT/lib/MaxMind/GeoIP/data' folder if you don't have it</li>
+	</ul>
+
+<h6>Address Form Fields:</h6>
+	<ul>
+		<li>You can do the field required, optional, or remove it from form</li>
+	</ul>
+	
+<p>If you have any problems with extension installation please contact us at <a href="http://www.interiorwebdesign.com/contact">interiorwebdesign.com/contact</a>.</p>
+
+<p class="fright">Sincerely, InteriorWebDesign Team</p>
+				
+					
+					</td>
+				</tr>
+			</tbody></table>
+		</td>
+	</tr>
+</tbody></table>
+
+<table align="center" bgcolor="#ffffff" border="0" cellpadding="1" cellspacing="0" width="800"><tbody>
+	<tr>
+		<td  bgcolor="#0B75A7">
+			<div class="footerc">Copyright &copy; 2001 <a href="http://www.interiorwebdesign.com">InteriorWebDesign</a></div>
+			<div class="footerl">
+				<a href="http://www.interiorwebdesign.com">InteriorWebDesign</a>&nbsp;|&nbsp;
+				<a href="http://www.interiorwebdesign.com/contact/">Contact us</a>
+			</div>
+		</td>
+	</tr>
+</tbody></table>
+
+</body>
+</html>

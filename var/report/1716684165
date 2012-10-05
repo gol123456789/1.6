@@ -1,0 +1,13 @@
+a:4:{i:0;s:23:"Invalid backend name []";i:1;s:1245:"#0 /var/www/magesecond/lib/Zend/Cache.php(137): Zend_Cache::throwException('Invalid backend...')
+#1 /var/www/magesecond/lib/Zend/Cache/Backend/TwoLevels.php(135): Zend_Cache::_makeBackend('', Array, true, true)
+#2 /var/www/magesecond/lib/Zend/Cache.php(153): Zend_Cache_Backend_TwoLevels->__construct(Array)
+#3 /var/www/magesecond/lib/Zend/Cache.php(94): Zend_Cache::_makeBackend('TwoLevels', Array, true, true)
+#4 /var/www/magesecond/app/code/core/Mage/Core/Model/Cache.php(124): Zend_Cache::factory('Varien_Cache_Co...', 'TwoLevels', Array, Array, true, true, true)
+#5 /var/www/magesecond/app/code/core/Mage/Core/Model/Config.php(1350): Mage_Core_Model_Cache->__construct(Array)
+#6 /var/www/magesecond/app/Mage.php(432): Mage_Core_Model_Config->getModelInstance('core/cache', Array)
+#7 /var/www/magesecond/app/code/core/Mage/Core/Model/App.php(396): Mage::getModel('core/cache', Array)
+#8 /var/www/magesecond/app/code/core/Mage/Core/Model/App.php(290): Mage_Core_Model_App->_initCache(Array)
+#9 /var/www/magesecond/app/code/core/Mage/Core/Model/App.php(332): Mage_Core_Model_App->baseInit(Array)
+#10 /var/www/magesecond/app/Mage.php(640): Mage_Core_Model_App->run(Array)
+#11 /var/www/magesecond/index.php(80): Mage::run('', 'store')
+#12 {main}";s:3:"url";s:1:"/";s:11:"script_name";s:10:"/index.php";}
